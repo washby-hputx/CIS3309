@@ -28,13 +28,25 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button addButton = findViewById(R.id.btnAdd);
+        Button cancelButton = findViewById(R.id.btnCancel);
+
         EditText taskName = findViewById(R.id.textTaskName);
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("MainActivity", "Button clicked");
                 String name = taskName.getText().toString();
                 Toast.makeText(MainActivity.this, "Button clicked:"+name, Toast.LENGTH_SHORT).show();
+                cancelButton.setText("Clear");
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                taskName.setText("");
+                Toast.makeText(MainActivity.this, "Cleared", Toast.LENGTH_LONG).show();
             }
         });
 
